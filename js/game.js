@@ -1,19 +1,18 @@
 //Class for Bear Management
 function Bear()
 {
-    //Moving the bear with that much difference
+    //Bear being moved with the below amount(100)
     this.dBear = 100;
-    //Accessing the bear using DOM
+    //Bear being accessed using DOM
     this.htmlElement = document.getElementById("bear");
-    //Getting the id of the element using htmlElement variable
+     //Getting the id of the element using htmlElement variable
     this.id = this.htmlElement.id;
-    //
     this.x = this.htmlElement.offsetLeft;
     this.y = this.htmlElement.offsetTop;
-    //Function for moving the bear
+    //the below function is to move the bear
     this.move = function(xDir, yDir) 
     {
-        this.fitBounds();
+        this.fitBounds(); //we add this instruction to keep bear within board
         this.x += this.dBear * xDir;
         this.y += this.dBear * yDir;
         this.display(); 
@@ -60,10 +59,10 @@ function restart()
     document.getElementById("bear").style.top=0+"px";
     start();
 }
-//For starting the game
+//To start the game
 function start() 
 {
-    //creating bear
+    //Create bear 
     bear = new Bear();
     //Creating bear when the keys are pressed
     document.addEventListener("keydown", moveBear, false);
@@ -90,27 +89,27 @@ function start()
 // Handle keyboad events // to move the bear 
 function moveBear(e) 
 {
-    //Creating constants for codes of the keys
+    //Codes of the four keys which are constants 
     const KEYUP = 38; 
     const KEYDOWN = 40; 
     const KEYLEFT = 37; 
     const KEYRIGHT = 39;
-    //If we press right key moving the bear
+    //If right key pressed moves the bear right
     if (e.keyCode == KEYRIGHT) 
     {
         bear.move(1, 0)
     } 
-    //If we press left key moving the bear
+    //If left key pressed moves the bear left
     if (e.keyCode == KEYLEFT) 
     {
         bear.move(-1, 0)
     }
-    //If we press up key moving the bear
+    //If up key pressed moves the bear up
     if (e.keyCode == KEYUP) 
     {
         bear.move(0, -1)
     }
-    //If we press down key moving the bear
+    //If down key pressed moves the bear down
     if (e.keyCode == KEYDOWN) 
     {
         bear.move(0, 1)
